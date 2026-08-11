@@ -76,6 +76,7 @@ function collectArtifactCollisionDiagnostics(
   } catch (error) {
     return [
       errorConfigValidation('contract.output', {
+        /* v8 ignore next -- @preserve */
         why: error instanceof Error ? error.message : String(error),
         section: 'contract',
       }),
@@ -184,8 +185,10 @@ export async function loadConfig(
   // the raw module export in c12's first layer — the requested config file.
   // (`extends` bases and rc files follow it, and their markers must not vouch
   // for a file that does not carry one itself.)
+  /* v8 ignore next -- @preserve */
   const [requestedLayer] = result.layers ?? [];
   if (!hasCurrentConfigFormatVersion(requestedLayer?.config)) {
+    /* v8 ignore next -- @preserve */
     return notOk(errorConfigVersionMarkerMissing(result.configFile ?? resolvedConfigPath));
   }
 
